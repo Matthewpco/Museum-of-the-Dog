@@ -7,10 +7,35 @@ Description: A custom WordPress block theme built for maximum stability and main
 Requires at least: 5.8
 Tested up to: 6.2
 Requires PHP: 5.7
-Version: 0.0.1
+Version: 0.1.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Template: twentytwentythree
 Text Domain: museumofthedog
 Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, rtl-language-support, sticky-post, threaded-comments, translation-ready, 
 */
+
+@font-face {
+    font-family: 'Helvetica Neue';
+    src: url('fonts/Helvetica-Neue/HelveticaNeue-LightExt.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Graphik';
+    src: url('fonts/Graphik/GraphikRegular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.home-second-section {
+	    background: linear-gradient(180deg,#fff 80%,rgba(0,0,0,.15));
+	padding-bottom: 5%;
+}
+
+.arty-lower-left img {
+	width: 130px!important;
+	position: absolute;
+	left: 25%;
+}
