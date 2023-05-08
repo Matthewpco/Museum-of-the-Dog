@@ -40,9 +40,15 @@ add_action('wp_enqueue_scripts', 'motd_enqueue_child_styles');
 
 
 function motd_enqueue_scripts() {
-  wp_enqueue_script( 'example', get_stylesheet_directory_uri() . '/js/animations.js', array(), '1.0.0', true );
+  wp_enqueue_script( 'example', get_stylesheet_directory_uri() . '/js/featured-image-title.js', array(), '1.0.0', true );
 }
-//add_action( 'wp_enqueue_scripts', 'motd_enqueue_scripts' );
+add_action( 'wp_enqueue_scripts', 'motd_enqueue_scripts' );
+
+
+function motd_enqueue_font_awesome_styles() {
+    wp_enqueue_style( 'font-awesome', get_stylesheet_directory_uri() . '/font-awesome/all.css', array(), '6.4.0' );
+}
+add_action( 'wp_enqueue_scripts', 'motd_enqueue_font_awesome_styles' );
 
 
 // Remove the WordPress version number from the head and RSS feeds for security.
