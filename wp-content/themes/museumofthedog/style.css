@@ -36,6 +36,12 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 .position-relative {
 	position: relative;
 }
+.flex-center {
+	align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+    
 /* Header styles */
 
 
@@ -122,7 +128,9 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 	padding-top: 0!important;
 }
 
-
+.custom-table td {
+	min-width: 48px;
+}
 /* Front page styles */
 
 
@@ -137,7 +145,7 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
     left: 20%;
 }
 
-.motd-media-text-wrapper {
+.motd-media-text-wrapper, .motd-media-text-wrapper-full {
 	position: relative;
 }
 
@@ -154,7 +162,7 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 	border-bottom-right-radius: 12px;
 }
 
-.motd-media-text::after {
+.motd-media-text::after, .motd-media-text-full::after {
     content: "\f054";
 	font-family: "Font Awesome 6 Free";
     font-weight: 900;
@@ -166,7 +174,7 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 	font-size: 1rem;
 }
 
-.motd-media-text:hover {
+.motd-media-text:hover, .motd-media-text-full:hover {
 	background-color: #0345ad;
 	transform: scale(1.1);
 }
@@ -204,7 +212,10 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 	padding: 6px;
 	font-size: 1rem;
 }
-
+.plan-separator {
+	height: 45vh;
+    width: 4px;
+}
 .separator {
     height: 30vh;
     width: 1px;
@@ -217,6 +228,46 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
     align-items: center;
 }
 
+
+/* Plan your visit page */
+
+.motd-media-text-wrapper img {
+	background-size: cover;
+}
+
+.motd-media-text-full {
+	background-color: #14377d;
+	color: #fff;
+	font-size: 1.5rem!important;
+	position: absolute;
+	left: -1%;
+	bottom: -5%;
+	padding: .8rem 2rem;
+	transition: all .3s;
+	border-top-right-radius: 12px;
+	border-bottom-right-radius: 12px;
+}
+
+
+/* Transportation styles */
+
+.custom-large-icons {
+	color: #fefefe;
+    background-color: #1487d1;
+    padding: 1rem;
+    font-size: 9rem;
+	width: 160px;
+	height: 160px;
+	text-align: center;
+}
+/* Footer styles */
+
+.footer-img {
+	background-color: #fefefe;
+	padding: 20px;
+	border-radius: 12px;
+	width: 50%;
+}
 .motd-growing-icons {
 	text-align: center;
 	color: #13477d;
