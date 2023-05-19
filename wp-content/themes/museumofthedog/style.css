@@ -1,0 +1,295 @@
+/*
+Theme Name: Museum of the Dog
+Theme URI: https://github.com/Matthewpco
+Author: Gary Matthew Payne
+Author URI: https://wpwebdevelopment.com/
+Description: A custom WordPress block theme built for maximum stability and maintainability.
+Requires at least: 5.8
+Tested up to: 6.2
+Requires PHP: 5.7
+Version: 0.1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Template: twentytwentythree
+Text Domain: museumofthedog
+Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, rtl-language-support, sticky-post, threaded-comments, translation-ready, 
+*/
+
+
+/* Custom fonts that are also added in the theme.json file to be selectable within the editor */
+
+
+@font-face {
+    font-family: 'Helvetica Neue';
+    src: url('fonts/Helvetica-Neue/HelveticaNeue-LightExt.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Graphik';
+    src: url('fonts/Graphik/GraphikRegular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.position-relative {
+	position: relative;
+}
+.flex-center {
+	align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+    
+/* Header styles */
+
+
+.header-wrapper {}
+
+.nav-separator::after {
+    content: "|";
+    margin: 0 0 0 20px;
+}
+
+.nav-separator-hours::after {
+    content: "\f054";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+	color: #14377d;
+	font-size: 1.2rem;
+    margin: 0 0 0 10px;
+}
+
+.nav-separator-before::before {
+    content: "|";
+    margin: 0 20px 0 0;
+}
+
+.nav-separator-before::after {
+    content: "\f3c5";
+	font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+	color: #14377d;
+	font-size: 1.2rem;
+    margin: 0 0 0 8px;
+}
+
+.nav-donate-button {
+	background-color: #14377d!important;
+	color: #fff!important;
+	padding: .5rem 1.5rem!important;
+	transition: all .3s;
+}
+
+.nav-donate-button:hover {
+	background-color: #fff!important;
+	color: #14377d!important;
+}
+
+
+.motd-social-icons .wp-social-link {
+	font-size: 1rem!important;
+}
+
+.motd-nav-menu a:hover {
+	text-decoration: none;
+	color: #0345ad!important;
+}
+
+/* Page Template styles */
+
+
+.featured-image-post-title {
+    display: none;
+}
+
+.motd-featured-image .hero-image-title {
+    position: absolute;
+    color: #fff;
+	font-size: 3rem;
+	text-transform: uppercase;
+	font-family: 'Graphik';
+    bottom: 0%;
+	margin: 0;
+    right: 20%;
+    border-radius: 50% 50% 0 0;
+    background-color: rgba(3, 69, 173, .6);
+    padding: 32px 48px;
+    transition: background-color 0.5s;
+}
+
+.hero-image-title:hover {
+    background-color: #0345ad;
+}
+
+.page-template-front main, .page-template-front main .wp-block-post-content {
+	margin-top: 0!important;
+	padding-top: 0!important;
+}
+
+.custom-table td {
+	min-width: 48px;
+}
+/* Front page styles */
+
+
+.home-second-section, .front-fourth-section {
+    background: linear-gradient(180deg, #fff 80%, rgba(0, 0, 0, .15));
+    padding: 0 10% 5% 10%;
+}
+
+.arty-lower-left img {
+    width: 130px !important;
+    position: absolute;
+    left: 20%;
+}
+
+.motd-media-text-wrapper, .motd-media-text-wrapper-full {
+	position: relative;
+}
+
+.motd-media-text {
+	background-color: #14377d;
+	color: #fff;
+	font-size: 1.5rem!important;
+	position: absolute;
+	left: 0%;
+	bottom: -10%;
+	padding: .8rem 2rem;
+	transition: all .3s;
+	border-top-right-radius: 12px;
+	border-bottom-right-radius: 12px;
+}
+
+.motd-media-text::after, .motd-media-text-full::after {
+    content: "\f054";
+	font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+	margin: 0 0 0 12px;
+	color: #fff;
+	background-color: #1487d1;
+	border-radius: 50%;
+	padding: 6px;
+	font-size: 1rem;
+}
+
+.motd-media-text:hover, .motd-media-text-full:hover {
+	background-color: #0345ad;
+	transform: scale(1.1);
+}
+
+.motd-media-text-wrapper img {
+	background-size: cover;
+	width: 450px!important;
+	height: 250px!important;
+}
+
+.arty-lower-right img {
+	width: 100px !important;
+    position: absolute;
+    bottom: 0;
+    right: 15%;
+    transform: scaleX(-1);
+}
+
+.motd-form-border input {
+	border: 1px solid #0345ad!important;
+}
+
+.motd-form-button {
+	padding: .8rem 1.8rem!important;
+}
+
+.font-a-chevron::after {
+    content: "\f054";
+	font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+	margin: 0 0 0 12px;
+	color: #fff;
+	background-color: #1487d1;
+	border-radius: 50%;
+	padding: 6px;
+	font-size: 1rem;
+}
+.plan-separator {
+	height: 45vh;
+    width: 4px;
+}
+.separator {
+    height: 30vh;
+    width: 1px;
+    background-color: #e1e1e1;
+}
+
+.separator-parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Plan your visit page */
+
+.motd-media-text-wrapper img {
+	background-size: cover;
+}
+
+.motd-media-text-full {
+	background-color: #14377d;
+	color: #fff;
+	font-size: 1.5rem!important;
+	position: absolute;
+	left: -1%;
+	bottom: -5%;
+	padding: .8rem 2rem;
+	transition: all .3s;
+	border-top-right-radius: 12px;
+	border-bottom-right-radius: 12px;
+}
+
+
+/* Transportation styles */
+
+.custom-large-icons {
+	color: #fefefe;
+    background-color: #1487d1;
+    padding: 1rem;
+    font-size: 9rem;
+	width: 160px;
+	height: 160px;
+	text-align: center;
+}
+/* Footer styles */
+
+.footer-img {
+	background-color: #fefefe;
+	padding: 20px;
+	border-radius: 12px;
+	width: 50%;
+}
+.motd-growing-icons {
+	text-align: center;
+	color: #13477d;
+	font-size: 5rem;
+}
+
+.motd-growing-icons h2 {
+	transition: all .2s;
+}
+
+.motd-growing-icons h2:hover {
+	color: #0345ad!important;
+}
+
+.motd-growing-icons i {
+	transition: all .2s;
+}
+
+.motd-growing-icons i:hover {
+	color: #fff;
+	background-color: #0345ad;
+	border-radius: 50%;
+	padding: 40px;
+	transform: scale(1.2);
+}
