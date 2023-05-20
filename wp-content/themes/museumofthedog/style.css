@@ -99,9 +99,17 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 
 /* Page Template styles */
 
+.home main div {
+	margin-bottom: 0!important;
+}
 
 .featured-image-post-title {
     display: none;
+}
+
+.motd-featured-image img {
+	object-fit: cover!important;
+	object-position: top;
 }
 
 .motd-featured-image .hero-image-title {
