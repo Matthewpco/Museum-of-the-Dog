@@ -42,6 +42,10 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
     flex-direction: column;
 }
     
+.padding-left-20 {
+	padding-left: 20%!important;
+}
+
 /* Header styles */
 
 
@@ -267,6 +271,30 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 	width: 160px;
 	height: 160px;
 	text-align: center;
+}
+
+/* Careers styles */
+.motd-media-button {
+	transition: all .3s;
+	background-color: #1587d1;
+	padding: .5rem 1.25rem;
+	border-radius: 6px;
+}
+
+.motd-media-button::after {
+    content: "\f054";
+	font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+	margin: 0 0 0 12px;
+	color: #fff;
+	background-color: #0345ad;
+	border-radius: 50%;
+	padding: 6px;
+	font-size: 1rem;
+}
+
+.motd-media-button:hover {
+	transform: scale(1.1);
 }
 /* Footer styles */
 
