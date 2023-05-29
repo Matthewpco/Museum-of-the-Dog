@@ -14,8 +14,6 @@ Template: twentytwentythree
 Text Domain: museumofthedog
 Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, rtl-language-support, sticky-post, threaded-comments, translation-ready, 
 */
-
-
 /* Custom fonts that are also added in the theme.json file to be selectable within the editor */
 
 
@@ -46,10 +44,80 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 	padding-left: 20%!important;
 }
 
+.cover, .cover img {
+	background-size: cover;
+	object-fit: cover;
+}
+
+.position-relative {
+	position: relative;
+}
+
+.center {
+	text-align: center;
+}
+
+.size-xlarge {
+	font-size: 5rem;
+}
+
+.white {
+	color: #fff;
+}
+
+.flex {
+	display: flex;
+}
+
+.column {
+	flex-direction: column;
+}
+
+.flex-end {
+	justify-content: flex-end;
+}
+/* Buttons */
+
+
+.motd-media-half img {
+	width: 500px;
+	height: 300px;
+}
+
+.motd-media-button {
+	transition: all .3s;
+	background-color: #1587d1;
+	padding: .5rem 1.25rem;
+	border-radius: 6px;
+}
+
+.motd-media-button::after {
+    content: "\f054";
+	font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+	margin: 0 0 0 12px;
+	color: #fff;
+	background-color: #0345ad;
+	border-radius: 50%;
+	padding: 6px;
+	font-size: 1rem;
+}
+
+.motd-media-button:hover {
+	transform: scale(1.1);
+}
+
+.motd-button-ltblue {
+
+}
+
+.motd-button-dkblue {
+	background-color: #14377d;
+}
+
+
 /* Header styles */
 
-
-.header-wrapper {}
 
 .nav-separator::after {
     content: "|";
@@ -101,7 +169,9 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 	color: #0345ad!important;
 }
 
+
 /* Page Template styles */
+
 
 .home main div {
 	margin-bottom: 0!important;
@@ -143,6 +213,8 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 .custom-table td {
 	min-width: 48px;
 }
+
+
 /* Front page styles */
 
 
@@ -172,6 +244,14 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 	transition: all .3s;
 	border-top-right-radius: 12px;
 	border-bottom-right-radius: 12px;
+}
+
+.motd-media-left {
+	left: -2%;
+}
+
+.motd-media-right {
+	left: 13%;
 }
 
 .motd-media-text::after, .motd-media-text-full::after {
@@ -243,6 +323,7 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 
 /* Plan your visit page */
 
+
 .motd-media-text-wrapper img {
 	background-size: cover;
 }
@@ -263,6 +344,7 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 
 /* Transportation styles */
 
+
 .custom-large-icons {
 	color: #fefefe;
     background-color: #1487d1;
@@ -274,29 +356,9 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 }
 
 /* Careers styles */
-.motd-media-button {
-	transition: all .3s;
-	background-color: #1587d1;
-	padding: .5rem 1.25rem;
-	border-radius: 6px;
-}
 
-.motd-media-button::after {
-    content: "\f054";
-	font-family: "Font Awesome 6 Free";
-    font-weight: 900;
-	margin: 0 0 0 12px;
-	color: #fff;
-	background-color: #0345ad;
-	border-radius: 50%;
-	padding: 6px;
-	font-size: 1rem;
-}
-
-.motd-media-button:hover {
-	transform: scale(1.1);
-}
 /* Footer styles */
+
 
 .footer-img {
 	background-color: #fefefe;
