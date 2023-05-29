@@ -108,7 +108,7 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 }
 
 .motd-button-ltblue {
-
+	background-color: #1587d1;
 }
 
 .motd-button-dkblue {
@@ -391,3 +391,4 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 	padding: 40px;
 	transform: scale(1.2);
 }
+
