@@ -31,9 +31,18 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
     font-style: normal;
 }
 
+/* Bug Fixes for Gutenberg editor */
+
+.has-global-padding > .alignfull {
+	margin-left: auto;
+	margin-right: auto;
+}
+/* Basic classes */
+
 .position-relative {
 	position: relative;
 }
+
 .flex-center {
 	align-items: center;
     display: flex;
@@ -76,6 +85,7 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 .flex-end {
 	justify-content: flex-end;
 }
+
 /* Buttons */
 
 
@@ -105,17 +115,28 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 
 .motd-media-button:hover {
 	transform: scale(1.1);
+	background-color: #14377d;
 }
 
-.motd-button-ltblue {
+.motd-media-button:hover::after {
 	background-color: #1587d1;
-}
+} 
 
 .motd-button-dkblue {
 	background-color: #14377d;
 }
 
+.motd-button-dkblue::after {
+	background-color: #1587d1;
+}
 
+.motd-button-dkblue:hover {
+	background-color: #1587d1;
+}
+
+.motd-button-dkblue:hover::after {
+	background-color: #14377d;
+}
 /* Header styles */
 
 
@@ -304,14 +325,23 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 	padding: 6px;
 	font-size: 1rem;
 }
+
 .plan-separator {
 	height: 45vh;
     width: 4px;
 }
+
 .separator {
     height: 30vh;
     width: 1px;
     background-color: #e1e1e1;
+}
+
+.horizontal-separator {
+	width: 80%;
+	height: 1px;
+	background-color: darkgray;
+	border: none;
 }
 
 .separator-parent {
