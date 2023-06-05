@@ -1,14 +1,19 @@
 <?php
 /*
-Plugin Name: Category Shortcode
+Plugin Name: Posts Category Filter
+Plugin URI: https://github.com/Matthewpco/WP-Plugin-Posts-Category-Filter
 Description: Creates a shortcode to display a container with a selection of WordPress categories. When a category is chosen, the posts with that category are displayed on the page.
+Version: 1.3.0
+Author: Gary Matthew Payne
+Author URI: https://wpwebdevelopment.com/
+License: GPL2
 */
 
 // Register the shortcode
-add_shortcode('category', 'category_shortcode');
+add_shortcode('posts_category_filter', 'posts_category_filter');
 
 // Register the scripts
-add_action('wp_enqueue_scripts', 'category_shortcode_scripts');
+add_action('wp_enqueue_scripts', 'posts_category_filter_scripts');
 
 // Register the AJAX actions
 add_action('wp_ajax_get_category_posts', 'get_category_posts');
@@ -19,9 +24,12 @@ add_action('wp_ajax_nopriv_get_category_posts', 'get_category_posts');
  *
  * @return string The HTML output for the category selection and posts.
  */
-function category_shortcode() {
+function posts_category_filter() {
     $categories = get_categories();
     $output = '<div class="category-container">';
+    $output .= '<div class="filter-container">';
+    $output .= '<h3 class="center">FILTER BLOG POSTS</h3>';
+    $output .= '<p>Select Category</p>';
     $output .= '<select id="category-select">';
     foreach ($categories as $category) {
         $output .= sprintf(
@@ -31,6 +39,7 @@ function category_shortcode() {
         );
     }
     $output .= '</select>';
+    $output .= '</div>';
     $output .= '<div id="category-posts"></div>';
     $output .= '</div>';
 
@@ -38,15 +47,20 @@ function category_shortcode() {
 }
 
 /**
- * Enqueue the JavaScript file for the category shortcode.
+ * Enqueue the JavaScript and CSS files for the category shortcode.
  */
-function category_shortcode_scripts() {
+function posts_category_filter_scripts() {
     wp_enqueue_script(
-        'category-shortcode',
-        plugin_dir_url(__FILE__) . 'js/category-shortcode.js',
+        'posts-category-filter-script',
+        plugin_dir_url(__FILE__) . 'js/posts-category-filter.js',
         array('jquery'),
         '1.0',
         true
+    );
+
+    wp_enqueue_style(
+    'posts-category-filter-style',
+    plugin_dir_url(__FILE__) . 'css/posts-category-filter.css'
     );
 }
 
@@ -75,11 +89,15 @@ function get_category_posts() {
     while ($query->have_posts()) :
     $query->the_post();
     ?>
+    <div class="post-info">
     <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+    <p><?php echo get_the_date(); ?></P>
+    </div>
     <?php if (has_post_thumbnail()) : ?>
-    <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
+    <div class="one-third-column"><a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a></div>
     <?php endif; ?>
-    <p><?php the_excerpt(); ?></p>
+    <div class="two-thirds-column"><a href="<?php the_permalink(); ?>"><?php the_excerpt(); ?></a></div>
+    <hr style="border-top: 1px solid darkgray; width: 100%">
     <?php
     endwhile;
     wp_reset_postdata();
