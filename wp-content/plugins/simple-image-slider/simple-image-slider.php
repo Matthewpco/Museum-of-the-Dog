@@ -49,7 +49,7 @@ function simple_image_slider_shortcode() {
 	<style>
 	  .simple-slider {
 		position: relative;
-		width: 100%;
+		width: 90%;
 	  }
   
 	  .simple-slider-container {
@@ -58,6 +58,9 @@ function simple_image_slider_shortcode() {
 	  }
   
 	  .slide {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 		flex: 0 0 29%;
     	padding: 1%;
     	margin: 1%;

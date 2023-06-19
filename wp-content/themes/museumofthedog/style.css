@@ -37,6 +37,12 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 	margin-left: auto;
 	margin-right: auto;
 }
+
+.has-global-padding {
+	padding-left: inherit;
+	padding-right: inherit;
+}
+
 /* Basic classes */
 
 .position-relative {
@@ -66,6 +72,10 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 	text-align: center;
 }
 
+.size-medium {
+	font-size: 1.5rem;
+}
+
 .size-xlarge {
 	font-size: 5rem;
 }
@@ -84,6 +94,10 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 
 .flex-end {
 	justify-content: flex-end;
+}
+
+.height-300 img {
+	height: 300px;
 }
 
 /* Buttons */
