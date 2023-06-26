@@ -436,3 +436,15 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 	transform: scale(1.2);
 }
 
+/* Childrens resources */
+
+.resource-file a {
+	color: #fff;
+	transition-duration: .3s;
+
+}
+
+.resource-file a:hover {
+	background-color: #1587d1;
+
+}
