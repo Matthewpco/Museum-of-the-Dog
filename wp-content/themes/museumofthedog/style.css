@@ -448,3 +448,19 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 	background-color: #1587d1;
 
 }
+
+/* Membership page */
+
+.padding-5-15 {
+	padding: 5% 15%!important;
+}
+
+.circle {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	background-color: white;
+	color: black;
+	text-align: center;
+	line-height: 200px;
+  }
