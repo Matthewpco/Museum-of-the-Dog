@@ -151,12 +151,25 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 .motd-button-dkblue:hover::after {
 	background-color: #14377d;
 }
+
 /* Header styles */
 
-
-.nav-separator::after {
+.nav-separator:not(:last-child)::after {
     content: "|";
     margin: 0 0 0 20px;
+}
+
+.nav-separator li:not(:last-child) {
+	border-bottom: 1px solid gray;
+}
+
+.wp-container-7 .nav-separator li:not(:last-child) {
+	border-bottom: 1px solid #1587d1;
+}
+
+.nav-separator li:hover, .nav-separator li span:hover, .nav-separator li a:hover  {
+	color: #fefefe!important;
+	background-color: #1487d1;
 }
 
 .nav-separator-hours::after {
@@ -166,6 +179,14 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 	color: #14377d;
 	font-size: 1.2rem;
     margin: 0 0 0 10px;
+}
+
+.nav-separator-hours {
+	transition: all .3s ease-in-out;
+ }
+
+.nav-separator-hours:hover {
+   transform: scale(1.05)
 }
 
 .nav-separator-before::before {
@@ -320,6 +341,10 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
     transform: scaleX(-1);
 }
 
+.image-flip {
+	transform: scaleX(-1);
+}
+
 .motd-form-border input {
 	border: 1px solid #0345ad!important;
 }
@@ -463,4 +488,6 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 	color: black;
 	text-align: center;
 	line-height: 200px;
+	margin-left: auto;
+	margin-right: auto;
   }
