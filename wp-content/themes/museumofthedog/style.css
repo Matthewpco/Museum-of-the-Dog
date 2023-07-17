@@ -31,6 +31,16 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
     font-style: normal;
 }
 
+/* Colors */
+
+:root {
+	--blue: #0345ad;
+	--dk-blue: #14377d;
+	--lt-blue: #1487d1;
+	--white: #fefefe;
+	--black: #231f20;
+  }
+
 /* Bug Fixes for Gutenberg editor */
 
 .has-global-padding > .alignfull {
@@ -41,6 +51,14 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 .has-global-padding {
 	padding-left: inherit;
 	padding-right: inherit;
+}
+
+.header-wrapper ol.has-background, .header-wrapper ul.has-background {
+	padding: inherit;
+}
+
+.header-wrapper .wp-block-navigation:not(.has-background) .wp-block-navigation__submenu-container {
+	border: none;
 }
 
 /* Basic classes */
@@ -76,12 +94,20 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 	font-size: 1.5rem;
 }
 
+.size-large {
+	font-size: 3rem;
+}
+
 .size-xlarge {
 	font-size: 5rem;
 }
 
 .white {
-	color: #fff;
+	color: var(--white);
+}
+
+.dk-blue {
+	color: var(--dk-blue);
 }
 
 .flex {
