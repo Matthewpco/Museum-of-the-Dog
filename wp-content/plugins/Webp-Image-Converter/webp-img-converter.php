@@ -3,7 +3,7 @@
 Plugin Name: Webp Image Converter
 Plugin URI: https://github.com/Matthewpco/WP-Plugin-Webp-Image-Converter
 Description: Wordpress plugin that adds a new submenu under tools with a form to either enter a url of an image to convert or upload an image and convert to webp.
-Version: 1.4.0
+Version: 1.5.0
 Author: Gary Matthew Payne
 Author URI: https://www.wpwebdevelopment.com
 */
@@ -12,6 +12,7 @@ Author URI: https://www.wpwebdevelopment.com
 if (!defined('ABSPATH')) {
     exit;
 }
+
 
 // Turn off size restrictions
 add_filter( 'big_image_size_threshold', '__return_false' );
@@ -25,8 +26,18 @@ add_action( 'admin_menu', 'webp_converter_admin_menu' );
 
 function webp_converter_form() {
     ?>
+	<style>
+	.separator {
+		width: 20%;
+		height: 1px;
+		background-color: gray;
+	}
+	</style>
     <div class="wrap">
-        <h1>WebP Converter</h1>
+        <h1>WebP Image Converter</h1>
+		<h2>Convert single image by url or upload</h2>
+		<div class="separator"></div>
+		<br>
         <form method="post" enctype="multipart/form-data">
             <label for="image_url">Image URL:</label>
             <input type="url" name="image_url" id="image_url">
@@ -35,10 +46,15 @@ function webp_converter_form() {
             <input type="file" name="image_file" id="image_file" accept=".jpg,.jpeg,.png">
             <input type="submit" value="Convert to WebP">
         </form>
+		<br>
+		<h2>Convert all images in media library</h2>
+		<div class="separator"></div>
+		<br>
 		<form method="post">
             <input type="hidden" name="convert_all_images" value="1">
             <input type="submit" value="Convert All Images">
         </form>
+
         <?php
         if ( isset( $_POST['convert_all_images'] ) ) {
              

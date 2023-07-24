@@ -36,7 +36,7 @@ class FormSelector implements IntegrationInterface {
 		'buttonBorderRadius'    => CSSVars::ROOT_VARS['button-border-radius'],
 		'buttonBackgroundColor' => CSSVars::ROOT_VARS['button-background-color'],
 		'buttonTextColor'       => CSSVars::ROOT_VARS['button-text-color'],
-		'copyPasteValue'        => '',
+		'copyPasteJsonValue'    => '',
 	];
 
 	/**
@@ -199,7 +199,7 @@ class FormSelector implements IntegrationInterface {
 			'buttonTextColor'       => [
 				'type' => 'string',
 			],
-			'copyPasteValue'        => [
+			'copyPasteJsonValue'        => [
 				'type' => 'string',
 			],
 		];
@@ -527,20 +527,7 @@ class FormSelector implements IntegrationInterface {
 
 		$is_gb_editor = $this->is_gb_editor();
 
-		if ( $is_gb_editor ) {
-			wpforms_display(
-				$id,
-				$title,
-				$desc
-			);
-		} else {
-			printf(
-				'[wpforms id="%s" title="%d" description="%d"]',
-				(int) $id,
-				(bool) $title,
-				(bool) $desc
-			);
-		}
+		wpforms_display( $id, $title, $desc );
 
 		/**
 		 * Fires after Gutenberg block output.
