@@ -26,6 +26,7 @@ class ComposerStaticInitcfddcb2a8e7ce1040fd21accde54c0a9
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Iconv\\' => 23,
             'Symfony\\Component\\CssSelector\\' => 30,
+            'Stripe\\' => 7,
         ),
     );
 
@@ -53,6 +54,10 @@ class ComposerStaticInitcfddcb2a8e7ce1040fd21accde54c0a9
         'Symfony\\Component\\CssSelector\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/css-selector',
+        ),
+        'Stripe\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/stripe/stripe-php/lib',
         ),
     );
 
