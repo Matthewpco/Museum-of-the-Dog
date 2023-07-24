@@ -517,3 +517,9 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 	margin-left: auto;
 	margin-right: auto;
   }
+
+  /* Naming opportunities */
+
+  .no-gap {
+	gap: 0!important;
+  }
