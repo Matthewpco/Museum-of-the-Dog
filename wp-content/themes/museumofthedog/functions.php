@@ -67,4 +67,14 @@ function my_remove_page_title( $title ) {
     }
     return $title;
 }
+
+
 //add_filter( 'the_title', 'my_remove_page_title' );
+function mobile_nav_menu_shortcode() {
+    ob_start();
+    get_template_part('template-parts/mobile-nav-header');
+    get_template_part('template-parts/mobile-nav-menu');
+    $output = ob_get_clean();
+    return $output;
+}
+add_shortcode('mobile_nav_menu', 'mobile_nav_menu_shortcode');

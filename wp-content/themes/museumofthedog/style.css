@@ -126,6 +126,10 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 	height: 300px;
 }
 
+.hidden {
+	display: none!important;
+}
+
 /* Buttons */
 
 
@@ -523,3 +527,62 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
   .no-gap {
 	gap: 0!important;
   }
+
+/* Responsive media queries */
+.mobile-nav-header-sc {
+	display: none!important;
+	width: 100%;
+	padding: 0 5%;
+	align-items: center;
+}
+
+.mobile-nav-header-sc .mobile-header-logo {
+	width: 35%;
+	height: auto;
+}
+
+.mobile-nav-header-sc div:nth-child(2) {
+	justify-content: end;
+}
+
+.mobile-nav-header-sc div:nth-child(3) {
+	justify-content: center;
+}
+
+.mobile-nav-header-sc .motd-media-button {
+	border: none;
+    color: white;
+}
+
+#mobile-nav-toggle {
+	font-size: 2rem;
+	color: #14377d;
+}
+
+/* Laptop media queries */
+@media only screen and (max-width: 1439px) {
+
+
+}
+
+/* Tablet media queries */
+@media only screen and (max-width: 1023px) {
+
+    /* struture */
+	.desktop-header {
+		display: none!important;
+	}
+
+	.mobile-nav-header-sc {
+		display: flex!important;
+	}
+
+}
+
+/* Mobile media queries */
+@media only screen and (max-width: 767px) {
+
+
+    /* structure */
+	
+}
