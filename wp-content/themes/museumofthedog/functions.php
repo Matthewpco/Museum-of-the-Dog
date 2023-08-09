@@ -40,7 +40,8 @@ add_action('wp_enqueue_scripts', 'motd_enqueue_child_styles');
 
 
 function motd_enqueue_scripts() {
-  wp_enqueue_script( 'example', get_stylesheet_directory_uri() . '/js/featured-image-title.js', array(), '1.0.0', true );
+  wp_enqueue_script( 'image-scroll', get_stylesheet_directory_uri() . '/js/featured-image-title.js', array(), '1.0.0', true );
+  wp_enqueue_script( 'mobile-nav', get_stylesheet_directory_uri() . '/js/mobile-nav-menu.js', array(), '1.0.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'motd_enqueue_scripts' );
 

@@ -130,6 +130,92 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 	display: none!important;
 }
 
+.one-third-column {
+	width: 33.3%;
+}
+
+.one-half-column {
+	width: 50%;
+}
+
+.two-thirds-column {
+	width: 66.6%;
+}
+/* NAV */
+
+/* Modal */
+
+.mobile-modal-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 11;
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    height: 100%;
+}
+
+.mobile-modal-content {
+    width: 90%;
+    height: 100%;
+    background-color: #1487d1;
+    animation-name: animateleft;
+    animation-duration: 0.4s;
+    color: #fff;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+}
+
+.modal-open {
+    overflow: hidden;
+}
+
+.mobile-submenu {
+    display: none;
+    padding-left: 5%;
+    top: 100%;
+    width: 100%;
+    left: 0;
+    z-index: 1;
+    transition: opacity 0.3s ease-in-out, visibility 0s linear 0.3s;
+}
+
+.mobile-modal-content .mobile-has-submenu.nav-active > .mobile-submenu  {
+    display: block;
+}
+
+.close {
+    font-size: 2rem;
+    padding: 5% 5% 0 0;
+}
+
+/* Add Animation */
+@-webkit-keyframes animateleft {
+    from {
+      left: -50%;
+      opacity: 0;
+    }
+  
+    to {
+      left: 0;
+      opacity: 1;
+    }
+}
+  
+@keyframes animateleft {
+    from {
+      left: -50%;
+      opacity: 0;
+    }
+  
+    to {
+      left: 0;
+      opacity: 1;
+    }
+}
+
 /* Buttons */
 
 
@@ -532,21 +618,21 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 .mobile-nav-header-sc {
 	display: none!important;
 	width: 100%;
-	padding: 0 5%;
+	padding: 0 10%;
 	align-items: center;
 }
 
 .mobile-nav-header-sc .mobile-header-logo {
-	width: 35%;
+	width: 75%;
 	height: auto;
 }
 
 .mobile-nav-header-sc div:nth-child(2) {
-	justify-content: end;
+	text-align: end;
 }
 
 .mobile-nav-header-sc div:nth-child(3) {
-	justify-content: center;
+	text-align: end;
 }
 
 .mobile-nav-header-sc .motd-media-button {
@@ -555,8 +641,12 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 }
 
 #mobile-nav-toggle {
-	font-size: 2rem;
+	font-size: 3rem;
 	color: #14377d;
+}
+
+.mobile-header {
+	flex-direction: row!important;
 }
 
 /* Laptop media queries */
@@ -584,5 +674,7 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 
 
     /* structure */
-	
+	#mobile-nav-toggle {
+		font-size: 2rem;
+	}
 }
