@@ -35,17 +35,18 @@
 .post-info {
 	width: 100%;
 }
-.two-thirds-column {
+
+#category-posts .two-thirds-column {
 	width: 66%;
 	display: flex;
 }
 
-.one-third-column {
+#category-posts .one-third-column {
 	width: 33%;
 	display: flex;
 }
 
-.one-third-column img {
+#category-posts .one-third-column img {
 	width: 300px;
 	height: 200px;
 }

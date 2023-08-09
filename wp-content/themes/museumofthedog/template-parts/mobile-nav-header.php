@@ -6,7 +6,7 @@
     </div>
 
     <div class="one-third-column">
-        <a href=""><button class="motd-media-button">DONATE</button></a>
+        <a href=""><button class="motd-media-button" style="border-radius: 4px;">DONATE</button></a>
     </div>
 
     <div class="one-third-column">
