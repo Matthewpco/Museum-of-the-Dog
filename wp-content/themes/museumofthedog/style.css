@@ -110,7 +110,7 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 	color: var(--dk-blue);
 }
 
-.flex {
+.flex, .display-flex {
 	display: flex;
 }
 
@@ -164,8 +164,20 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
     color: #fff;
     position: relative;
     display: flex;
-    flex-wrap: wrap;
+	flex-direction: column;
     overflow-y: auto;
+	font-family: var(--wp--preset--font-family--graphik) !important;
+}
+
+.mobile-modal-content-menu nav > ul {
+	display: flex;
+	flex-direction: column;
+	list-style: none;
+	padding: 1% 5%;
+}
+.mobile-modal-content-menu nav > ul li {
+	margin: 2% 0;
+	font-size: 1.2rem;
 }
 
 .modal-open {
@@ -189,6 +201,7 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 .close {
     font-size: 2rem;
     padding: 5% 5% 0 0;
+	color: white;
 }
 
 /* Add Animation */
