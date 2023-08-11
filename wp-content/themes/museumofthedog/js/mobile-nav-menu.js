@@ -45,8 +45,17 @@ document.addEventListener("DOMContentLoaded", function() {
         navDropDown.forEach((e) => {
             e.addEventListener('click', function() {
                 e.classList.toggle("nav-active");
+                toggleOpen.call(e);
             })
         })
+    }
+
+    // Define a function to handle clicks on li elements
+    function toggleOpen() {
+        // Find the ul.mobile-submenu element within the clicked li element
+        let ulElement = this.querySelector('ul.mobile-submenu');
+        // Toggle the open class on the ul element
+        ulElement.classList.toggle('open');
     }
 
 });
