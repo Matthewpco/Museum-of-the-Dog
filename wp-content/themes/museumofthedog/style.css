@@ -39,7 +39,11 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 	--lt-blue: #1487d1;
 	--white: #fefefe;
 	--black: #231f20;
-  }
+}
+
+.white {
+	color: #fefefe;
+}
 
 /* Bug Fixes for Gutenberg editor */
 
@@ -173,11 +177,23 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 	display: flex;
 	flex-direction: column;
 	list-style: none;
-	padding: 1% 5%;
+	padding: 1% 10%;
 }
 .mobile-modal-content-menu nav > ul li {
-	margin: 2% 0;
-	font-size: 1.2rem;
+	margin: 3% 0;
+	font-size: 1.125rem;
+}
+
+.mobile-has-submenu i {
+	float: right;
+}
+
+.mobile-submenu li {
+	list-style: none;
+	padding-left: 5%;
+	text-transform: uppercase;
+	padding-top: 2.5%;
+	padding-bottom: 2.5%;
 }
 
 .modal-open {
@@ -186,13 +202,30 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 
 .mobile-submenu {
     display: none;
-    padding-left: 5%;
     top: 100%;
+	padding-left: 0;
     width: 100%;
     left: 0;
     z-index: 1;
-    transition: opacity 0.3s ease-in-out, visibility 0s linear 0.3s;
+	background-color: #0345ad;
+	border-radius: 3px;
 }
+
+@keyframes rollDown {
+    0% {
+        max-height: 0;
+		opacity: 0;
+    }
+    100% {
+        max-height: 500px;
+		opacity: 1;
+    }
+}
+
+.mobile-submenu.open {
+    animation: rollDown .5s ease-in-out forwards;
+}
+
 
 .mobile-modal-content .mobile-has-submenu.nav-active > .mobile-submenu  {
     display: block;
@@ -619,13 +652,13 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 	line-height: 200px;
 	margin-left: auto;
 	margin-right: auto;
-  }
+}
 
-  /* Naming opportunities */
+/* Naming opportunities */
 
-  .no-gap {
+.no-gap {
 	gap: 0!important;
-  }
+}
 
 /* Responsive media queries */
 .mobile-nav-header-sc {
@@ -680,6 +713,9 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 		display: flex!important;
 	}
 
+	.mobile-modal-content-menu ul li a {
+		color: white;
+	}
 }
 
 /* Mobile media queries */
@@ -689,5 +725,9 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
     /* structure */
 	#mobile-nav-toggle {
 		font-size: 2rem;
+	}
+
+	.mobile-modal-wrapper a {
+		color: white;
 	}
 }
