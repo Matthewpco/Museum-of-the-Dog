@@ -2,7 +2,7 @@
 <div class="mobile-nav-header-sc">
 
     <div class="one-third-column">
-        <img src="/wp-content/uploads/2023/06/xlogo.png.pagespeed.ic.BgdoPQZF17.webp" width="60px" alt="mobile-museum-logo" class="mobile-header-logo"/>
+        <a href="/"><img src="/wp-content/uploads/2023/06/xlogo.png.pagespeed.ic.BgdoPQZF17.webp" width="60px" alt="mobile-museum-logo" class="mobile-header-logo"/></a>
     </div>
 
     <div class="one-third-column">

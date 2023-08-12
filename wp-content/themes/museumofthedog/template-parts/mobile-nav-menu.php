@@ -54,34 +54,37 @@
                             <li><a href="/about/news">news</a></li>
                         </ul>
                     </li>
-                    <li class="no-submenu"><a href="/">CONTACT</a></li>
+                    <li class="no-submenu"><a href="/contact">CONTACT</a></li>
                     <li class="mobile-has-submenu"><a href="/museum-attractions">MUSEUM ATTRACTIONS</a><i class="fa-solid fa-chevron-down"></i>
                         <ul class="mobile-submenu">
-                            <li><a href="/plan-your-visit/our-neighborhood/">Our Neighborhood</a></li>
-                            <li><a href="/plan-your-visit/directions-and-parking/">directions & parking</a></li>
-                            <li><a href="/plan-your-visit/museum-map/">museum map</a></li>
-                            <li><a href="/plan-your-visit/facility-rental/">facility rental</a></li>
-                            <li><a href="/plan-your-visit/tours-and-group-visits/">groups and tours</a></li>
-                            <li><a href="/first-visit">First Visit</a></li>
-                            <li><a href="/post-op-care">Post-Op Care</a></li>
+                            <li><a href="/museum-attractions/exhibitions">Exhibitions</a></li>
+                            <li><a href="/museum-attractions/permanent-collection">Permanent Collection</a></li>
+                            <li><a href="/museum-attractions/interactive-experiences">Interactive experiences</a></li>
+                            <li><a href="/museum-attractions/library-and-archives">Library & archives</a></li>
+                            <li><a href="/museum-attractions/story-of-the-breeder">Story of the breeder</a></li>
+                            <li><a href="/museum-attractions/museum-store">Museum store</a></li>
                         </ul>
                     </li>
-                    <li class="mobile-has-submenu">EVENTS & EDUCATION<i class="fa-solid fa-chevron-down"></i>
+                    <li class="mobile-has-submenu"><a href="/events-and-education">EVENTS & EDUCATION</a><i class="fa-solid fa-chevron-down"></i>
                         <ul class="mobile-submenu">
-                            <li><a href="/first-visit">First Visit</a></li>
-                            <li><a href="/post-op-care">Post-Op Care</a></li>
+                            <li><a href="/events-and-education/calendar">Calendar</a></li>
+                            <li><a href="/events-and-education/public-programs">Public programs</a></li>
+                            <li><a href="/events-and-education/childrens-programs">Childrens programs</a></li>
+                            <li><a href="/events-and-education/childrens-online-resources">Childrens online resources</a></li>
+                            <li><a href="/events-and-education/tv">AKC.TV</a></li>
+                            <li><a href="/events-and-education/video-library">Video Library</a></li>
                         </ul>
                     </li>
                     <li class="mobile-has-submenu">MEMBERSHIP<i class="fa-solid fa-chevron-down"></i>
                         <ul class="mobile-submenu">
-                            <li><a href="/first-visit">First Visit</a></li>
-                            <li><a href="/post-op-care">Post-Op Care</a></li>
+                            <li><a href="/membership">Membership</a></li>
+                            <li><a href="/membership/library-members">Library Members</a></li>
                         </ul>
                     </li>
                     <li class="mobile-has-submenu">GET INVOLVED<i class="fa-solid fa-chevron-down"></i>
                         <ul class="mobile-submenu">
-                            <li><a href="/first-visit">First Visit</a></li>
-                            <li><a href="/post-op-care">Post-Op Care</a></li>
+                            <li><a href="/get-involved">Get involved</a></li>
+                            <li><a href="/get-involved/donate">Donate</a></li>
                         </ul>
                     </li>
                 </ul>
