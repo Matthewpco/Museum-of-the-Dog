@@ -727,16 +727,41 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 		font-size: 2rem;
 	}
 
+	.mobile-padding {
+		padding: 5%!important;
+	}
+
+	.mobile-center {
+		text-align: center;
+	}
+
+	.mobile-no-padding, .motd-media-text-wrapper {
+		padding: 0!important;
+	}
+
 	.mobile-modal-wrapper a {
 		color: white;
 	}
 
-	.hero-image-title {
+	.motd-featured-image .hero-image-title, .hero-image-slide .hero-image-title {
+		border-radius: 0;
+		width: 100%;
+		font-size: 1.75rem;
+		text-align: center;
+		padding: 0;
+		right: 0%;
+	}
+
+	.parent-separator {
 		display: none;
 	}
 
+	.motd-featured-image, .motd-featured-image img {
+		height: 220px!important;
+	}
+
 	.hero-image-slider {
-		height: 240px;
+		height: 220px;
 	}
 
 	.home-second-section div > p {
@@ -761,7 +786,7 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 		padding: 0!important;
 	}
 
-	.front-fourth-section .motd-media-text-wrapper h2 {
+	.front-fourth-section .motd-media-text-wrapper h2, .motd-media-text, iframe {
 		width: 100%;
 	}
 
@@ -798,14 +823,14 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 	}
 
 	footer .motd-growing-icons + div > div > div:nth-child(1) {
-		padding: 2%!important;
-		width: 40%;
+		padding: 5%!important;
+		width: 35%;
 		flex-basis: initial!important;
 	}
 
 	footer .motd-growing-icons + div > div > div:nth-child(2) {
-		padding: 2%!important;
-		width: 40%;
+		padding: 5%!important;
+		width: 35%;
 		flex-basis: initial!important;
 	}
 
@@ -815,5 +840,30 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 
 	footer > div:nth-child(3) {
 		padding: 10%!important;
+	}
+
+	/* Plan your visit */
+
+	.iframe-display-fix iframe {
+		width: 100%;
+	}
+
+	/* News */
+
+	#category-posts .post-info + div img {
+		width: 100%;
+		height: auto;
+	}
+
+	/* Donate */
+
+	.mobile-padding figure, .motd-media-half {
+		margin-inline-start: 0!important;
+	}
+
+
+
+	.motd-media-right {
+		left: 0!important;
 	}
 }
