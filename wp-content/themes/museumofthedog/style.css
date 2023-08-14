@@ -735,6 +735,11 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 		text-align: center;
 	}
 
+	.mobile-center .wp-block-buttons {
+		justify-content: center;
+		width: 100%;
+	}
+
 	.mobile-no-padding, .motd-media-text-wrapper {
 		padding: 0!important;
 	}
@@ -751,6 +756,34 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 		padding: 0;
 		right: 0%;
 	}
+
+	.motd-media-text {
+		left: 0;
+		padding: .75rem 0;
+		border-radius: 0;
+	}
+
+	.motd-media-text a, .motd-media-text-full a {
+		padding-left: 5%;
+	}
+
+	.motd-media-half img {
+		height: 240px!important;
+	}
+
+	.motd-media-text-wrapper-full figure img {
+		height: 240px;
+	}
+
+	.motd-media-text-full {
+		width: 100%;
+		padding-left: 5%;
+		border-radius: 0!important;
+		padding: .75rem 0;
+		left: 0;
+	}
+
+
 
 	.parent-separator {
 		display: none;
@@ -861,9 +894,33 @@ Tags: blog, news, portfolio, one-column, wide-blocks, accessibility-ready, block
 		margin-inline-start: 0!important;
 	}
 
-
-
 	.motd-media-right {
 		left: 0!important;
+	}
+
+	/* Exhibitions */
+
+	.simple-slider .right {
+		right: 2vw;
+		font-size: 1.5rem;
+	}
+
+	.simple-slider .left {
+		left: 2vw;
+		font-size: 1.5rem;
+	}
+
+	#wp--skip-link--target > div.entry-content.wp-block-post-content.has-graphik-font-family.has-global-padding.is-layout-constrained.wp-container-28 > div.wp-block-group.mobile-padding.mobile-center.is-vertical.is-content-justification-center.is-layout-flex.wp-container-27 > div > div.wp-block-column.is-vertically-aligned-center.is-layout-flow {
+		padding-left: 0!important;
+	}
+
+	.small-text {
+		font-size: 1rem;
+	}
+
+	/* Library members */
+
+	.image-flip {
+		display: none;
 	}
 }

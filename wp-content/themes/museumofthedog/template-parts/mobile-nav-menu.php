@@ -60,6 +60,7 @@
                             <li><a href="/museum-attractions/exhibitions">Exhibitions</a></li>
                             <li><a href="/museum-attractions/permanent-collection">Permanent Collection</a></li>
                             <li><a href="/museum-attractions/interactive-experiences">Interactive experiences</a></li>
+                            <li><a href="/museum-attractions/community-wall">Community Wall</a></li>
                             <li><a href="/museum-attractions/library-and-archives">Library & archives</a></li>
                             <li><a href="/museum-attractions/story-of-the-breeder">Story of the breeder</a></li>
                             <li><a href="/museum-attractions/museum-store">Museum store</a></li>
