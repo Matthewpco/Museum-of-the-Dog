@@ -39,6 +39,15 @@ abstract class WPForms_Field {
 	public $icon = false;
 
 	/**
+	 * Field keywords for search, eg "checkbox, file, icon, upload".
+	 *
+	 * @since 1.8.3
+	 *
+	 * @var string
+	 */
+	public $keywords = '';
+
+	/**
 	 * Priority order the field button should show inside the "Add Fields" tab.
 	 *
 	 * @since 1.0.0
@@ -123,8 +132,15 @@ abstract class WPForms_Field {
 			return;
 		}
 
-		// The form ID is to be accessed in the builder.
-		$this->form_id = isset( $_GET['form_id'] ) ? (int) $_GET['form_id'] : false; // phpcs:ignore WordPress.Security.NonceVerification
+		// phpcs:disable WordPress.Security.NonceVerification
+		$this->form_id = false;
+
+		if ( isset( $_GET['form_id'] ) ) {
+			$this->form_id = absint( $_GET['form_id'] );
+		} elseif ( isset( $_POST['id'] ) ) {
+			$this->form_id = absint( $_POST['id'] );
+		}
+		// phpcs:enable WordPress.Security.NonceVerification
 
 		// Bootstrap.
 		$this->init();
@@ -140,6 +156,9 @@ abstract class WPForms_Field {
 				return $this;
 			}
 		);
+
+		// Field data.
+		add_filter( 'wpforms_field_data', [ $this, 'field_data' ], 10, 2 );
 
 		// Add fields tab.
 		add_filter( 'wpforms_builder_fields_buttons', [ $this, 'field_button' ], 15 );
@@ -176,6 +195,12 @@ abstract class WPForms_Field {
 
 		// Add HTML line breaks before all newlines in Entry Preview.
 		add_filter( "wpforms_pro_fields_entry_preview_get_field_value_{$this->type}_field_after", 'nl2br', 100 );
+
+		// Add allowed HTML tags for the field label.
+		add_filter( 'wpforms_builder_strings', [ $this, 'add_allowed_label_html_tags' ] );
+
+		// Exclude empty dynamic choices from Entry Preview.
+		add_filter( 'wpforms_pro_fields_entry_preview_print_entry_preview_exclude_field', [ $this, 'exclude_empty_dynamic_choices' ], 10, 3 );
 	}
 
 	/**
@@ -488,8 +513,11 @@ abstract class WPForms_Field {
 				if ( ( isset( $choice['value'] ) && '' !== trim( $choice['value'] ) ) || empty( $choice['image'] ) ) {
 					continue;
 				}
-				/* translators: %d - choice number. */
-				$form_data['fields'][ $field_key ]['choices'][ $choice_id ]['value'] = sprintf( esc_html__( 'Choice %d', 'wpforms-lite' ), (int) $choice_id );
+
+				$form_data['fields'][ $field_key ]['choices'][ $choice_id ]['value'] = sprintf( /* translators: %d - choice number. */
+					esc_html__( 'Choice %d', 'wpforms-lite' ),
+					(int) $choice_id
+				);
 			}
 		}
 
@@ -523,8 +551,10 @@ abstract class WPForms_Field {
 				) ||
 				(
 					empty( $choice_arr[ $choice_value_key ] ) &&
-					/* translators: %d - choice number. */
-					$get_value === sprintf( esc_html__( 'Choice %d', 'wpforms-lite' ), (int) $choice_key )
+					$get_value === sprintf( /* translators: %d - choice number. */
+						esc_html__( 'Choice %d', 'wpforms-lite' ),
+						(int) $choice_key
+					)
 				)
 			) {
 				$default_key = $choice_key;
@@ -645,6 +675,26 @@ abstract class WPForms_Field {
 	}
 
 	/**
+	 * Get field data for the field.
+	 *
+	 * @since 1.8.2
+	 *
+	 * @param array $field     Current field.
+	 * @param array $form_data Form data and settings.
+	 *
+	 * @return array
+	 */
+	public function field_data( $field, $form_data ) {
+
+		// Remove field on frontend if it has no dynamic choices.
+		if ( $this->is_dynamic_choices_empty( $field, $form_data ) ) {
+			return [];
+		}
+
+		return $field;
+	}
+
+	/**
 	 * Create the button for the 'Add Fields' tab, inside the form editor.
 	 *
 	 * @since 1.0.0
@@ -657,10 +707,11 @@ abstract class WPForms_Field {
 
 		// Add field information to fields array.
 		$fields[ $this->group ]['fields'][] = [
-			'order' => $this->order,
-			'name'  => $this->name,
-			'type'  => $this->type,
-			'icon'  => $this->icon,
+			'order'    => $this->order,
+			'name'     => $this->name,
+			'type'     => $this->type,
+			'icon'     => $this->icon,
+			'keywords' => $this->keywords,
 		];
 
 		// Wipe hands clean.
@@ -1236,7 +1287,7 @@ abstract class WPForms_Field {
 				$note .= '<h4>' . esc_html__( 'Dynamic Choices Active', 'wpforms-lite' ) . '</h4>';
 
 				$note .= sprintf(
-					/* translators: %1$s - source name; %2$s - type name. */
+					/* translators: %1$s - source name, %2$s - type name. */
 					'<p>' . esc_html__( 'Choices are dynamically populated from the %1$s %2$s. Go to the Advanced tab to change this.', 'wpforms-lite' ) . '</p>',
 					'<span class="dynamic-name">' . esc_html( $source ) . '</span>',
 					'<span class="dynamic-type">' . esc_html( $type ) . '</span>'
@@ -1321,7 +1372,7 @@ abstract class WPForms_Field {
 					$fld .= sprintf(
 						'<input type="text" name="%s[value]" value="%s" class="value wpforms-money-input" placeholder="%s">',
 						esc_attr( $base ),
-						esc_attr( $value['value'] ),
+						esc_attr( wpforms_format_amount( wpforms_sanitize_amount( $value['value'] ) ) ),
 						wpforms_format_amount( 0 )
 					);
 					$fld .= '<a class="add" href="#"><i class="fa fa-plus-circle"></i></a><a class="remove" href="#"><i class="fa fa-minus-circle"></i></a>';
@@ -2291,8 +2342,12 @@ abstract class WPForms_Field {
 
 						$label = isset( $value['label'] ) ? trim( $value['label'] ) : '';
 
-						/* translators: %d - Choice item number. */
-						$label  = $label !== '' ? $label : sprintf( esc_html__( 'Choice %d', 'wpforms-lite' ), (int) $key );
+						$label  = $label !== '' ?
+							$label :
+							sprintf( /* translators: %d - choice number. */
+								esc_html__( 'Choice %d', 'wpforms-lite' ),
+								(int) $key
+							);
 						$label .= ! empty( $field['show_price_after_labels'] ) && isset( $value['value'] ) ? ' - ' . wpforms_format_amount( wpforms_sanitize_amount( $value['value'] ), true ) : '';
 
 						$output .= sprintf(
@@ -2337,8 +2392,12 @@ abstract class WPForms_Field {
 
 						$label = isset( $value['label'] ) ? trim( $value['label'] ) : '';
 
-						/* translators: %d - Choice item number. */
-						$label  = $label !== '' ? $label : sprintf( esc_html__( 'Choice %d', 'wpforms-lite' ), (int) $key );
+						$label  = $label !== '' ?
+							$label :
+							sprintf( /* translators: %d - choice number. */
+								esc_html__( 'Choice %d', 'wpforms-lite' ),
+								(int) $key
+							);
 						$label .= ! empty( $field['show_price_after_labels'] ) && isset( $value['value'] ) ? ' - ' . wpforms_format_amount( wpforms_sanitize_amount( $value['value'] ), true ) : '';
 
 						if ( $with_images ) {
@@ -2767,6 +2826,30 @@ abstract class WPForms_Field {
 	}
 
 	/**
+	 * Exclude empty dynamic choices from the entry preview.
+	 *
+	 * @since 1.8.2
+	 *
+	 * @param bool  $hide      Whether to hide the field.
+	 * @param array $field     Field data.
+	 * @param array $form_data Form data.
+	 *
+	 * @return bool
+	 */
+	public function exclude_empty_dynamic_choices( $hide, $field, $form_data ) {
+
+		if ( empty( $field['dynamic'] ) ) {
+			return $hide;
+		}
+
+		$field_id   = $field['id'];
+		$fields     = $form_data['fields'];
+		$form_field = $fields[ $field_id ];
+
+		return $this->is_dynamic_choices_empty( $form_field, $form_data );
+	}
+
+	/**
 	 * Enqueue Choicesjs script and config.
 	 *
 	 * @param array $forms Forms on the current page.
@@ -2863,5 +2946,136 @@ abstract class WPForms_Field {
 		$this->$property = class_exists( $fqdn_class ) ? new $fqdn_class( $this ) : false;
 
 		return $this->$property;
+	}
+
+	/**
+	 * Add allowed HTML tags for field labels.
+	 *
+	 * @since 1.8.2
+	 *
+	 * @param array $strings Array of strings.
+	 *
+	 * @return array
+	 */
+	public function add_allowed_label_html_tags( $strings ) {
+
+		// Default allowed tags.
+		$allowed_tags = [
+			'br',
+			'strong',
+			'b',
+			'em',
+			'i',
+			'a',
+		];
+
+		/**
+		 * Filter the allowed HTML tags for field labels.
+		 *
+		 * @since 1.8.2
+		 *
+		 * @param array $allowed_tags Allowed HTML tags.
+		 */
+		$strings['allowed_label_html_tags'] = (array) apply_filters( 'wpforms_field_label_allowed_html_tags', $allowed_tags );
+
+		return $strings;
+	}
+
+	/**
+	 * Whether a field has dynamic choices.
+	 *
+	 * @since 1.8.2
+	 *
+	 * @param array $field Field settings.
+	 *
+	 * @return bool
+	 */
+	protected function is_dynamic_choices( $field ) {
+
+		return ! empty( $field['dynamic_choices'] );
+	}
+
+	/**
+	 * Whether a field has dynamic choices and they are empty.
+	 *
+	 * @since 1.8.2
+	 *
+	 * @param array $field     Field settings.
+	 * @param array $form_data Form data and settings.
+	 *
+	 * @return bool
+	 */
+	protected function is_dynamic_choices_empty( $field, $form_data ) {
+
+		if ( ! $this->is_dynamic_choices( $field ) ) {
+			return false;
+		}
+
+		$form_id = absint( $form_data['id'] );
+		$dynamic = wpforms_get_field_dynamic_choices( $field, $form_id, $form_data );
+
+		return empty( $dynamic );
+	}
+
+	/**
+	 * Get empty dynamic choices message.
+	 *
+	 * @since 1.8.2
+	 *
+	 * @param array $field Field data and settings.
+	 *
+	 * @return string
+	 */
+	protected function get_empty_dynamic_choices_message( $field ) {
+
+		$dynamic = ! empty( $field['dynamic_choices'] ) ? $field['dynamic_choices'] : false;
+
+		if ( ! $dynamic ) {
+			return '';
+		}
+
+		if ( empty( $field[ 'dynamic_' . $dynamic ] ) ) {
+			return '';
+		}
+
+		$source = esc_html__( 'Dynamic choices', 'wpforms-lite' );
+		$type   = esc_html__( 'items', 'wpforms-lite' );
+
+		$source_object = null;
+
+		if ( $dynamic === 'post_type' ) {
+			$type          = esc_html__( 'posts', 'wpforms-lite' );
+			$source_object = get_post_type_object( $field[ 'dynamic_' . $dynamic ] );
+		}
+
+		if ( $dynamic === 'taxonomy' ) {
+			$type          = esc_html__( 'terms', 'wpforms-lite' );
+			$source_object = get_taxonomy( $field[ 'dynamic_' . $dynamic ] );
+		}
+
+		if ( $source_object !== null ) {
+			$source = $source_object->labels->name;
+		}
+
+		return sprintf( /* translators: %1$s - data source name (e.g. Categories, Posts), %2$s - data source type (e.g. post type, taxonomy). */
+			esc_html__( 'This field will not be displayed in your form since there are no %2$s belonging to %1$s.', 'wpforms-lite' ),
+			esc_html( $source ),
+			esc_html( $type )
+		);
+	}
+
+	/**
+	 * Display empty dynamic choices message.
+	 *
+	 * @since 1.8.2
+	 *
+	 * @param array $field Field data and settings.
+	 */
+	protected function display_empty_dynamic_choices_message( $field ) {
+
+		printf(
+			'<div class="wpforms-alert wpforms-alert-warning">%s</div>',
+			esc_html( $this->get_empty_dynamic_choices_message( $field ) )
+		);
 	}
 }

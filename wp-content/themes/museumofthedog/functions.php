@@ -40,7 +40,8 @@ add_action('wp_enqueue_scripts', 'motd_enqueue_child_styles');
 
 
 function motd_enqueue_scripts() {
-  wp_enqueue_script( 'example', get_stylesheet_directory_uri() . '/js/featured-image-title.js', array(), '1.0.0', true );
+  wp_enqueue_script( 'image-scroll', get_stylesheet_directory_uri() . '/js/featured-image-title.js', array(), '1.0.0', true );
+  wp_enqueue_script( 'mobile-nav', get_stylesheet_directory_uri() . '/js/mobile-nav-menu.js', array(), '1.0.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'motd_enqueue_scripts' );
 
@@ -67,4 +68,40 @@ function my_remove_page_title( $title ) {
     }
     return $title;
 }
+
+
 //add_filter( 'the_title', 'my_remove_page_title' );
+function mobile_nav_menu_shortcode() {
+    ob_start();
+    get_template_part('template-parts/mobile-nav-header');
+    get_template_part('template-parts/mobile-nav-menu');
+    $output = ob_get_clean();
+    return $output;
+}
+add_shortcode('mobile_nav_menu', 'mobile_nav_menu_shortcode');
+
+//add artworks custom post type
+function create_artworks_post_type() {
+    register_post_type('artworks',
+        array(
+            'labels' => array(
+                'name' => __('Artworks'),
+                'singular_name' => __('Artwork')
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'supports' => array('title', 'editor', 'thumbnail')
+        )
+    );
+}
+add_action('init', 'create_artworks_post_type');
+
+
+// Send various headers for better security
+function add_security_headers() {
+    header('Strict-Transport-Security: max-age=31536000; includeSubDomains; preload');
+    header('X-Content-Type-Options: nosniff');
+    header('X-Frame-Options: SAMEORIGIN');
+    header("Referrer-Policy: no-referrer-when-downgrade");
+}
+add_action('send_headers', 'add_security_headers');

@@ -16,6 +16,7 @@ class WPForms_Field_Radio extends WPForms_Field {
 
 		// Define field type information.
 		$this->name     = esc_html__( 'Multiple Choice', 'wpforms-lite' );
+		$this->keywords = esc_html__( 'radio', 'wpforms-lite' );
 		$this->type     = 'radio';
 		$this->icon     = 'fa-dot-circle-o';
 		$this->order    = 110;
@@ -146,7 +147,7 @@ class WPForms_Field_Radio extends WPForms_Field {
 
 			$value = isset( $field['show_values'] ) ? $choice['value'] : $choice['label'];
 			/* translators: %s - choice number. */
-			$value = ( '' === $value ) ? sprintf( esc_html__( 'Choice %s', 'wpforms-lite' ), $key ) : $value;
+			$value = ( $value === '' ) ? sprintf( esc_html__( 'Choice %s', 'wpforms-lite' ), $key ) : $value;
 
 			$properties['inputs'][ $key ] = [
 				'container'  => [
@@ -372,7 +373,7 @@ class WPForms_Field_Radio extends WPForms_Field {
 	}
 
 	/**
-	 * Field display on the form front-end.
+	 * Field display on the form front-end and admin entry edit page.
 	 *
 	 * @since 1.0.0
 	 *
@@ -388,6 +389,18 @@ class WPForms_Field_Radio extends WPForms_Field {
 		// Define data.
 		$container = $field['properties']['input_container'];
 		$choices   = $field['properties']['inputs'];
+
+		// Do not display the field with empty choices on the frontend.
+		if ( ! $choices && ! is_admin() ) {
+			return;
+		}
+
+		// Display a warning message on Entry Edit page.
+		if ( ! $choices && is_admin() ) {
+			$this->display_empty_dynamic_choices_message( $field );
+
+			return;
+		}
 
 		$amp_state_id = '';
 
@@ -521,6 +534,27 @@ class WPForms_Field_Radio extends WPForms_Field {
 	}
 
 	/**
+	 * Validate field.
+	 *
+	 * @since 1.8.2
+	 *
+	 * @param int          $field_id     Field ID.
+	 * @param string|array $field_submit Submitted field value (selected option).
+	 * @param array        $form_data    Form data and settings.
+	 */
+	public function validate( $field_id, $field_submit, $form_data ) {
+
+		$field = $form_data['fields'][ $field_id ];
+
+		// Skip validation if field is dynamic and choices are empty.
+		if ( $this->is_dynamic_choices_empty( $field, $form_data ) ) {
+			return;
+		}
+
+		parent::validate( $field_id, $field_submit, $form_data );
+	}
+
+	/**
 	 * Format and sanitize field.
 	 *
 	 * @since 1.0.2
@@ -591,6 +625,7 @@ class WPForms_Field_Radio extends WPForms_Field {
 					/* translators: %s - choice number. */
 					if ( $field_submit === $choice['label'] || $value_raw === sprintf( esc_html__( 'Choice %s', 'wpforms-lite' ), $key ) ) {
 						$choice_key = $key;
+
 						break;
 					}
 				}
