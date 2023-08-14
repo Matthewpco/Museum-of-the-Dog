@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Simple Image Slider
+Plugin Name: Simple Image Sliders
 Plugin URI: https://github.com/Matthewpco/WP-Plugin-Webp-Image-Converter
 Description: Wordpress plugin that adds a new shortcode to slide images 
 Version: 1.0.0
