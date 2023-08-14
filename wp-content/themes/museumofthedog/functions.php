@@ -79,3 +79,29 @@ function mobile_nav_menu_shortcode() {
     return $output;
 }
 add_shortcode('mobile_nav_menu', 'mobile_nav_menu_shortcode');
+
+//add artworks custom post type
+function create_artworks_post_type() {
+    register_post_type('artworks',
+        array(
+            'labels' => array(
+                'name' => __('Artworks'),
+                'singular_name' => __('Artwork')
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'supports' => array('title', 'editor', 'thumbnail')
+        )
+    );
+}
+add_action('init', 'create_artworks_post_type');
+
+
+// Send various headers for better security
+function add_security_headers() {
+    header('Strict-Transport-Security: max-age=31536000; includeSubDomains; preload');
+    header('X-Content-Type-Options: nosniff');
+    header('X-Frame-Options: SAMEORIGIN');
+    header("Referrer-Policy: no-referrer-when-downgrade");
+}
+add_action('send_headers', 'add_security_headers');
