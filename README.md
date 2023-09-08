@@ -1,3 +1,6 @@
+![](https://raw.githubusercontent.com/Matthewpco/Museum-of-the-Dog/main/wp-content/themes/museumofthedog/imgs/motd-page-speed.png)
+![](https://raw.githubusercontent.com/Matthewpco/Museum-of-the-Dog/main/wp-content/themes/museumofthedog/imgs/motd-security-score.png)
+
 # Musuem-of-the-Dog
 
 ## Project Summary:
@@ -35,8 +38,7 @@ WP Forms is used for contact and submission forms so they can simply be modified
 ### Install instructions:
 To import the site simply take a backup from wp all in one migration and import it onto a clean site with the plugin installed. This plugin is free and transfers the files as well as database in one click within minutes. Site is also on Github at https://github.com/Matthewpco/Museum-of-the-Dog and can be forked from there, but that does not contain the database. Website is currently located at https://project-motd.cloud/ and can be accessed with the following credentials.
 
-#### Server Note: You must use a standard server to install this. Any standard web host such as WP Engine, Kinsta, Bluehost, Dreamhost, Siteground, GoDaddy will all allow you to create a new clean wordpress website within minutes for less than 10 dollars a month. Do not attempt to install this on a non-standard server that is running out of date PHP. Current recommend PHP is 8.0 or 8.1 , site was built with current recommended version of PHP anything less is out of date and insecure for any site to run on. Will host current site at project-motd.cloud for 90 days.
+#### Will host current site at project-motd.cloud for 90 days.
 
-https://project-motd.cloud/wp-admin
-Torraine.Williams@akc.org
-7M1BJvqUhEpZVd9KRO0K0om*
+![](https://raw.githubusercontent.com/Matthewpco/Museum-of-the-Dog/main/wp-content/themes/museumofthedog/imgs/motd-old-score.png)
+![](https://raw.githubusercontent.com/Matthewpco/Museum-of-the-Dog/main/wp-content/themes/museumofthedog/imgs/motd-old-security-score.png)
