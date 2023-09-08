@@ -1,5 +1,6 @@
-![](https://raw.githubusercontent.com/Matthewpco/Museum-of-the-Dog/main/wp-content/themes/museumofthedog/imgs/motd-page-speed.png)
-![](https://raw.githubusercontent.com/Matthewpco/Museum-of-the-Dog/main/wp-content/themes/museumofthedog/imgs/motd-security-score.png)
+![](https://github.com/Matthewpco/Museum-of-the-Dog/blob/main/wp-content/themes/museumofthedog/imgs/motd-screenshot.png?raw=true)
+![](https://github.com/Matthewpco/Museum-of-the-Dog/blob/main/wp-content/themes/museumofthedog/imgs/motd-page-speed.png?raw=true)
+![](https://github.com/Matthewpco/Museum-of-the-Dog/blob/main/wp-content/themes/museumofthedog/imgs/motd-security-score.png?raw=true)
 
 # Musuem-of-the-Dog
 
@@ -40,5 +41,5 @@ To import the site simply take a backup from wp all in one migration and import 
 
 #### Will host current site at project-motd.cloud for 90 days.
 
-![](https://raw.githubusercontent.com/Matthewpco/Museum-of-the-Dog/main/wp-content/themes/museumofthedog/imgs/motd-old-score.png)
-![](https://raw.githubusercontent.com/Matthewpco/Museum-of-the-Dog/main/wp-content/themes/museumofthedog/imgs/motd-old-security-score.png)
+![](https://github.com/Matthewpco/Museum-of-the-Dog/blob/main/wp-content/themes/museumofthedog/imgs/motd-old-score.png?raw=true)
+![](https://github.com/Matthewpco/Museum-of-the-Dog/blob/main/wp-content/themes/museumofthedog/imgs/motd-old-security-score.png?raw=true)
